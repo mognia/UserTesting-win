@@ -1,7 +1,11 @@
 
 <nav class="navbar navbar-dark bg-dark">
     <div class="row">
-      <div class="col-5 col-md-4 headerSection">.col-6 .col-md-4</div>
+      <div class="col-5 col-md-4" style=" margin-top: 6px;">
+        <div class="numField">
+          <p>+98 9101722342</p>
+        </div>
+      </div>
       <div class="col-6 col-md-5 headerSection">
         <div class="balance">
           <p class="toman"> تومان </p>
@@ -9,18 +13,18 @@
           <p class="balanceTxt"> : موجودی</p>
         </div>
       </div>
-      <div class="col-1 headerSection">
-        <div class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-users-cog"></i>
+      <div class="col-1 ">
+          <button mat-button [matMenuTriggerFor]="menu" class="settingBtn">
+              <i class="fas fa-users-cog"></i>
           </button>
-          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <a class="dropdown-item" href="#">Dropdown link</a>
-            <a class="dropdown-item" href="#">Dropdown link</a>
-          </div>
-        </div>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              خروج
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+            <button mat-menu-item>Item 2</button>
+          </mat-menu>
       </div>
     </div>
   </nav>
- 
+  <!-- <i class="fas fa-users-cog"></i> -->
