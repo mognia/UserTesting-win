@@ -1,0 +1,33 @@
+.headerSection{
+
+    margin: 3% 0 0 0;
+}
+.balance{
+    border-top: 0px ridge #b1c8cc;
+    border-right: 3px ridge #b1c8cc;
+    border-bottom: 0px ridge #b1c8cc;
+    border-left: 3px ridge #b1c8cc;
+    border-width: 0px 3px 0px 3px;
+    border-style: ridge ridge ridge ridge;
+    border-color: #b1c8cc #b1c8cc #b1c8cc #b1c8cc;
+    font-size: 14px;
+    text-align: center;
+    padding: 0 12px;
+
+}
+p{
+    margin: 0
+}
+.balanceTxt{
+    display: inline-block;
+}
+.balanceNum{
+    display: inline-block;
+    padding: 0 2px;
+}
+.toman{
+    display: inline-block;
+}
+.bg-dark{
+    color: #fff;
+}

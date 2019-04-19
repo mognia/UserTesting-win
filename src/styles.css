@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: iranSansM;
+    src: url(./assets/fonts/iransansMedium.woff2) format("opentype");
+  }
+
+body{
+    font-family: iranSansM
+}
