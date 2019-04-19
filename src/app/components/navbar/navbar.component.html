@@ -1,9 +1,15 @@
 
 <nav class="navbar navbar-dark bg-dark">
     <div class="row">
-      <div class="col-5 col-md-4" style=" margin-top: 6px;">
-        <div class="numField">
-          <p>+98 9101722342</p>
+      <div class="col-4 col-md-4" style=" margin-top: 6px;">
+        <div class="logout btns">
+            <i class="fas fa-power-off"></i>
+        </div>
+        <div class="refresh btns">
+            <i class="fas fa-sync"></i>
+        </div>
+        <div class="notif btns">
+            <i class="fas fa-bell"></i>
         </div>
       </div>
       <div class="col-6 col-md-5 headerSection">
@@ -13,7 +19,7 @@
           <p class="balanceTxt"> : موجودی</p>
         </div>
       </div>
-      <div class="col-1 ">
+      <div class="col-2 ">
           <button mat-button [matMenuTriggerFor]="menu" class="settingBtn">
               <i class="fas fa-users-cog"></i>
           </button>

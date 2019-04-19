@@ -60,11 +60,14 @@ p {
 .mat-menu-item i {
   padding: 0 5px;
 }
-.numField {
-  background: #fff;
-  color: #000;
-  padding: 5px 0 2px 10px;
-  border-radius: 4%;
-/* 
-  box-shadow: -3px -1px 6px 9px rgba(41,46,51,1) */
+.notif {
+
+}
+.logout{
+ 
+}
+.btns{
+  display: inline-block;
+  font-size: 20px;
+  margin: 0 7px;
 }
