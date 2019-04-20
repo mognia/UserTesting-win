@@ -1,6 +1,7 @@
 .bodyTitle{
     text-align: center;
-    margin: 5% 0 0 0;
+    margin: 5% 0 0 2%;
+    padding: 0 0% 0 6px;
     font-size: 19px;
     font-weight: bold;
 }

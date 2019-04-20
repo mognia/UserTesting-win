@@ -1,0 +1,46 @@
+.req-container{
+    overflow-y: scroll;
+    height: 380px;
+    background-color: #00000014;
+    margin: 0px 13px;
+    font-size: 12px;
+}
+.req{
+    width: 448px;
+    /* background: #e0e0e0; */
+    padding: 9px 10px;
+    margin-top: 12px;
+    /* border-bottom: 1px solid; */
+    /* border-top: 1px solid; */
+    box-shadow: 3px 2px 8px 0px #000000;
+}
+.req-col{
+    display: -webkit-box;
+}
+.req-col button{
+    margin-left: 12px;
+}
+.times p{
+    margin: 0 16px;
+    padding: 2px 0px;
+}
+.price-col{
+    border-right: 1px solid;
+    border-left: 1px solid;
+    margin: 0 8px;
+    padding: 0 12px;
+}
+.price-col p{
+    margin-top: 12px;
+    font-size: 14px;
+    color: brown;
+}
+.mini-logo{
+    max-width: 40px;
+    margin-left: 12px;
+}
+.companyName{
+    margin: 8px 0 0 0;
+    font-size: 14px;
+    color: #0d0aca;
+}
