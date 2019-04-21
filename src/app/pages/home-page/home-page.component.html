@@ -1,4 +1,4 @@
 <app-navbar></app-navbar>
-<p class="bodyTitle">لیست درخواست ها</p>
+<p class="bodyTitle">{{title}}</p>
 <app-req-list *ngIf="step == 1" (reqSelected)='reqSelected()'></app-req-list>
-<app-req-review *ngIf="step == 2"></app-req-review>
+<app-req-review *ngIf="step == 2" (declinedReq)='declinedReq()'></app-req-review>

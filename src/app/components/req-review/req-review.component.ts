@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-req-review',
@@ -11,5 +11,5 @@ export class ReqReviewComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  @Output() declinedReq = new EventEmitter<any>();
 }

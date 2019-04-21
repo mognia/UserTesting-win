@@ -1,0 +1,38 @@
+.mat-card {
+    box-shadow: 0 5px 1px -1px rgba(0,0,0,.2), 0 7px 1px 0 rgba(0,0,0,.14), 0 10px 3px 0 rgba(0,0,0,.12);
+    background-color: #eaeaea;
+}
+.review{
+    margin: 5% 7%;
+    width: 400px;
+}
+.cardTitle{
+    border-bottom: 1px solid #b3b3b3;
+    padding: 0px 0 6px 0;
+}
+.cardTitle p{
+    margin: 0;
+    text-align: center;
+}
+.cardTitle .title{
+    font-weight: bold;
+    font-size: 20px;
+    color: cornflowerblue;
+}
+.cardTitle .discribe{
+    font-size: 13px;
+}
+.cardBody{
+    text-align: right;
+    font-size: 16px;
+    line-height: 26px;
+}
+.cardBody .title{
+    margin-top: 12px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.cardFooter button{
+    margin: 9px 9px;
+    font-size: 14px;
+}

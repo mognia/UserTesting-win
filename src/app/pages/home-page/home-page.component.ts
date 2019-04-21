@@ -7,6 +7,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
   step = 1;
+  title = 'لیست درخواست ها'
   constructor() { 
     
   }
@@ -14,6 +15,11 @@ export class HomePageComponent implements OnInit {
   ngOnInit() {
   }
   reqSelected(){
-    this.step = 2
+    this.step = 2;
+    this.title = 'بررسی درخواست'
+  }
+  declinedReq(){
+    this.step = 1;
+    this.title = 'لیست درخواست ها'
   }
 }
