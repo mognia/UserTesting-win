@@ -1,21 +1,32 @@
 <div class="review">
-    <mat-card>
-      <div class="cardTitle">
-        <p class="title">شرکت گوگل</p>
-        <p class="discribe">بررسی وب سایت</p>
-      </div>
-      <div class="cardBody">
-        <p class="title">
+  <mat-card>
+    <div class="cardTitle">
+      <p class="title">شرکت گوگل</p>
+      <p class="discribe">بررسی وب سایت</p>
+    </div>
+    <div class="cardBody">
+      <p class="title">
         تایید صلاحیت برای شروع تست
-         </p>
-        <p class="discribe">
-          
-        </p>
-      </div>
-      <div class="cardFooter">
-        <button type="button" class="btn btn-primary" (click)='acceptReq.emit("accepted")'>قبول</button>
-        <button type="button" class="btn btn-secondary" (click)='declinedReq.emit("declinedReq")'>بازگشت</button>
-      </div>
-    </mat-card>
-  
-  </div>
+      </p>
+      <p class="discribe">
+        میانگین چند ساعت در روز آنلاین هستید؟
+      </p>
+        <div class="options">
+
+          <mat-radio-group aria-label="Select an option" dir="rtl">
+            <mat-radio-button value="1">کمتر از 1 ساعت</mat-radio-button>
+            <mat-radio-button value="2"> 1 تا 2 ساعت </mat-radio-button>
+            <mat-radio-button value="3"> 2 تا 3 ساعت </mat-radio-button>
+            <mat-radio-button value="4"> 3 تا 4 ساعت </mat-radio-button>
+            <mat-radio-button value="5"> بیش از 4 ساعت </mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+    </div>
+    <div class="cardFooter">
+      <button type="button" class="btn btn-primary" (click)='acceptQual.emit("accepted")'>قبول</button>
+      <button type="button" class="btn btn-secondary" (click)='declinedQual.emit("declinedReq")'>بازگشت</button>
+    </div>
+  </mat-card>
+
+</div>

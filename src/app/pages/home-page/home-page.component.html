@@ -2,4 +2,4 @@
 <p class="bodyTitle">{{title}}</p>
 <app-req-list *ngIf="step == 1" (reqSelected)='reqSelected()'></app-req-list>
 <app-req-review *ngIf="step == 2" (declinedReq)='declinedReq()' (acceptReq)='acceptReq()'></app-req-review>
-<app-req-qualification *ngIf='step == 3'></app-req-qualification>
+<app-req-qualification *ngIf='step == 3' (declinedQual)='declinedQual()'></app-req-qualification>

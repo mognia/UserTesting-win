@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-req-qualification',
@@ -11,5 +11,6 @@ export class ReqQualificationComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  @Output() declinedQual = new EventEmitter<any>();
+  @Output() acceptQual = new EventEmitter<any>();
 }

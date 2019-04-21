@@ -26,4 +26,8 @@ export class HomePageComponent implements OnInit {
     this.step = 3;
     this.title = 'بررسی صلاحیت'
   }
+  declinedQual(){
+    this.step = 2;
+    this.title = 'بررسی درخواست'
+  }
 }
