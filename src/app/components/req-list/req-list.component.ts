@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-req-list',
@@ -11,5 +11,6 @@ export class ReqListComponent implements OnInit {
 
   ngOnInit() {
   }
+  @Output() reqSelected = new EventEmitter<any>();
 
 }
