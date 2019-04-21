@@ -1,5 +1,6 @@
-const { app, BrowserWindow } = require('electron')
-
+const { app, BrowserWindow, ipcMain } = require('electron')
+var events = require('events');
+var eventEmitter = new events.EventEmitter();
 let win;
 
 function createWindow () {
@@ -45,3 +46,7 @@ app.on('activate', function () {
     createWindow()
   }
 })
+
+ipcMain.on('ping', (event) => {
+  event.sender.send('pong');
+});
