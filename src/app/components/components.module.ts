@@ -6,22 +6,26 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';
 import { ReqListComponent } from './req-list/req-list.component';
 import { ReqReviewComponent } from './req-review/req-review.component';
+import { ReqQualificationComponent } from './req-qualification/req-qualification.component';
 
 const materialModules = [
   MatButtonModule,
   MatMenuModule,
-  MatCardModule
+  MatCardModule,
+  
 ]
 @NgModule({
     exports: [
         NavbarComponent,
         ReqListComponent,
-        ReqReviewComponent
+        ReqReviewComponent,
+        ReqQualificationComponent
     ],
     declarations: [
         NavbarComponent,
         ReqListComponent,
-        ReqReviewComponent
+        ReqReviewComponent,
+        ReqQualificationComponent
     ],
     imports: [
         BrowserModule,

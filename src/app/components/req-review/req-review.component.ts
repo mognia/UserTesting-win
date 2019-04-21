@@ -12,4 +12,5 @@ export class ReqReviewComponent implements OnInit {
   ngOnInit() {
   }
   @Output() declinedReq = new EventEmitter<any>();
+  @Output() acceptReq = new EventEmitter<any>();
 }
