@@ -1,0 +1,24 @@
+.recCtrl{
+    border-right: 1px solid #4e4e4e63;
+    margin: 9px 3px;
+    border-left: 1px solid #4e4e4e63;
+    color: cornflowerblue;
+    padding: 4px 0 0 14px;
+    background: gainsboro;
+    font-size: 19px;
+}
+.recCtrl:hover{
+    color: #fff;
+}
+.steps{
+    display: inline-block;
+    margin: 7px 11px;
+    text-align: center;
+    background: cornflowerblue;
+    color: #fff;
+    font-family: iranSansM;
+    padding: 0 22px;
+}
+mat-raised-button{
+    font-family: iranSansM;
+}

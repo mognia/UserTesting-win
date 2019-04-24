@@ -4,7 +4,7 @@ import { HomePageComponent } from "./home-page/home-page.component";
 import { PagesRoutingModule } from "./pages-routing.module";
 import { ComponentsModule } from "./../components/components.module";
 import { RecorderComponent } from './recorder/recorder.component';
-
+import {MatButtonModule} from '@angular/material/button';
 const homeComponent =[
   HomePageComponent
 ]
@@ -17,6 +17,7 @@ const homeComponent =[
     BrowserModule,
     PagesRoutingModule,
     ComponentsModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [],

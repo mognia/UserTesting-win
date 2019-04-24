@@ -11,7 +11,7 @@ function createWindow () {
   
     width: 498, 
     height: 770,
-    backgroundColor: '#ffffff',
+   backgroundColor: '#ffffff',
     icon: `file://${__dirname}/dist/assets/logo.png`
   })
 
@@ -20,7 +20,7 @@ function createWindow () {
 
   win.setMenu(null)
 
-
+  win.setResizable(false);
   //// uncomment below to open the DevTools.
   // win.webContents.openDevTools()
 
@@ -35,22 +35,21 @@ function createRecorder () {
   // Create the browser window.
   Recorder = new BrowserWindow({
   
-    width: 414, 
-    height: 100,
-    frame: false,
-    backgroundColor: '#ffffff',
+    width: 314, 
+    height: 90,
+    // frame: false,
+    backgroundColor: '#fff',
     icon: `file://${__dirname}/dist/assets/logo.png`
   })
-
-
+  
   Recorder.loadURL(`file://${__dirname}/dist/UserTesting-win/index.html#rec`)
+  
+  Recorder.setMenu(null);
 
-
-
+  Recorder.setResizable(false);
 
   //// uncomment below to open the DevTools.
-  // win.webContents.openDevTools()
-
+   Recorder.webContents.openDevTools()
   // Event when the window is closed.
   Recorder.on('closed', function () {
     Recorder = null
@@ -78,7 +77,6 @@ app.on('activate', function () {
 })
 
 ipcMain.on('OpenRec', (event) => {
-  eventEmitter.emit('closeMain');
   createRecorder();
   win.hide();
 });
