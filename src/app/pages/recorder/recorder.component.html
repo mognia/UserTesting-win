@@ -10,8 +10,9 @@
         <i class="far fa-play-circle"></i>
     </div>
     <div class="col-5 float-right">
-      <button mat-raised-button class="steps">
-          <i class="fas fa-angle-double-down"></i>
+      <button mat-raised-button class="steps" (click)="openSteps()">
+          <i *ngIf='!isStepsOpen' class="fas fa-angle-double-down"></i>
+          <i *ngIf='isStepsOpen' class="fas fa-angle-double-up"></i>
           مراحل
         </button>
 

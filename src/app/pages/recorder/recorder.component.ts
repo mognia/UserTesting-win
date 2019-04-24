@@ -11,4 +11,17 @@ export class RecorderComponent implements OnInit {
 
   ngOnInit() {
   }
+  isStepsOpen = false;
+  openSteps(){
+    if (this.isStepsOpen == false) {
+      this._ipc.send('openSteps');
+      this.isStepsOpen=true;
+      console.log('open');
+      
+    } else {
+      this._ipc.send('closeSteps');
+      console.log('close');
+      this.isStepsOpen=false;
+    }
+  }
 }

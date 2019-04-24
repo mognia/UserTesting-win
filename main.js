@@ -47,13 +47,25 @@ function createRecorder () {
   Recorder.setMenu(null);
 
   Recorder.setResizable(false);
-
+  
   //// uncomment below to open the DevTools.
    Recorder.webContents.openDevTools()
   // Event when the window is closed.
   Recorder.on('closed', function () {
-    Recorder = null
-  })
+    Recorder = null;
+    win = null
+  });
+
+  ipcMain.on('openSteps',()=>{
+    Recorder.setResizable(true);
+    Recorder.setSize(314,200);
+    Recorder.setResizable(false);
+  });
+  ipcMain.on('closeSteps',()=>{
+    Recorder.setResizable(true);
+    Recorder.setSize(314,90);
+    Recorder.setResizable(false);
+  });
 }
 
 
