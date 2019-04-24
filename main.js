@@ -18,7 +18,7 @@ function createWindow () {
 
   win.loadURL(`file://${__dirname}/dist/UserTesting-win/index.html`)
 
-
+  win.setMenu(null)
 
 
   //// uncomment below to open the DevTools.
@@ -35,8 +35,9 @@ function createRecorder () {
   // Create the browser window.
   Recorder = new BrowserWindow({
   
-    width: 498, 
-    height: 770,
+    width: 414, 
+    height: 100,
+    frame: false,
     backgroundColor: '#ffffff',
     icon: `file://${__dirname}/dist/assets/logo.png`
   })
