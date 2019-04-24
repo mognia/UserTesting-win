@@ -24,7 +24,7 @@
 
     </div>
     <div class="cardFooter">
-      <button type="button" class="btn btn-primary" id="acceptQual">قبول</button>
+      <button type="button" class="btn btn-primary" id="acceptQual" (click)='openRecorder()'>قبول</button>
       <button type="button" class="btn btn-secondary" (click)='declinedQual.emit("declinedReq")'>بازگشت</button>
     </div>
   </mat-card>

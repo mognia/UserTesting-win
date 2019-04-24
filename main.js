@@ -1,7 +1,9 @@
-const { app, BrowserWindow, ipcMain } = require('electron')
+const { app, BrowserWindow, ipcMain ,ipcRenderer } = require('electron')
 var events = require('events');
 var eventEmitter = new events.EventEmitter();
 let win;
+const remote = require('electron').remote;
+
 
 function createWindow () {
   // Create the browser window.
@@ -24,9 +26,36 @@ function createWindow () {
 
   // Event when the window is closed.
   win.on('closed', function () {
-    win = null
+    win = null;
+  });
+
+}
+
+function createRecorder () {
+  // Create the browser window.
+  Recorder = new BrowserWindow({
+  
+    width: 498, 
+    height: 770,
+    backgroundColor: '#ffffff',
+    icon: `file://${__dirname}/dist/assets/logo.png`
+  })
+
+
+  Recorder.loadURL(`file://${__dirname}/dist/UserTesting-win/index.html#rec`)
+
+
+
+
+  //// uncomment below to open the DevTools.
+  // win.webContents.openDevTools()
+
+  // Event when the window is closed.
+  Recorder.on('closed', function () {
+    Recorder = null
   })
 }
+
 
 // Create window on electron intialization
 app.on('ready', createWindow)
@@ -47,6 +76,8 @@ app.on('activate', function () {
   }
 })
 
-ipcMain.on('ping', (event) => {
-  event.sender.send('pong');
+ipcMain.on('OpenRec', (event) => {
+  eventEmitter.emit('closeMain');
+  createRecorder();
+  win.hide();
 });

@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-
+import { IpcService } from "./../../services/ipc.service";
 @Component({
   selector: 'app-req-qualification',
   templateUrl: './req-qualification.component.html',
@@ -7,9 +7,12 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ReqQualificationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private  _ipc: IpcService) { }
 
   ngOnInit() {
+  }
+  openRecorder(){
+    this._ipc.send('OpenRec');
   }
   @Output() declinedQual = new EventEmitter<any>();
   @Output() acceptQual = new EventEmitter<any>();
