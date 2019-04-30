@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain ,ipcRenderer } = require('electron')
+const { app, BrowserWindow, ipcMain ,ipcRenderer ,desktopCapturer } = require('electron')
 var events = require('events');
 var eventEmitter = new events.EventEmitter();
 let win;
@@ -8,7 +8,6 @@ const remote = require('electron').remote;
 function createWindow () {
   // Create the browser window.
   win = new BrowserWindow({
-  
     width: 498, 
     height: 770,
    backgroundColor: '#ffffff',
@@ -22,7 +21,7 @@ function createWindow () {
 
   win.setResizable(false);
   //// uncomment below to open the DevTools.
-  // win.webContents.openDevTools()
+   win.webContents.openDevTools()
 
   // Event when the window is closed.
   win.on('closed', function () {

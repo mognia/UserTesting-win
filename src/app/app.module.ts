@@ -7,7 +7,7 @@ import { ComponentsModule } from "./components/components.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
-
+import { NgxElectronModule } from 'ngx-electron';
 const materialModules = [
   MatButtonModule,
   MatMenuModule
@@ -22,6 +22,7 @@ const materialModules = [
     PagesModule,
     ComponentsModule,
     BrowserAnimationsModule,
+    NgxElectronModule,
     ...materialModules
   ],
   providers: [],
