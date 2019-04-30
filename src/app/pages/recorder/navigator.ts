@@ -11,7 +11,6 @@ export interface Navigator {
             };
             audio?: boolean;
         },
-
         success: (stream: any) => any,
         error?: (error: string) => void
     ): void;

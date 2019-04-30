@@ -7,27 +7,26 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
   step = 1;
-  title = 'لیست درخواست ها'
-  constructor() { 
-    
+  title = 'لیست درخواست ها';
+  constructor() {
   }
 
   ngOnInit() {
   }
-  reqSelected(){
+  reqSelected() {
     this.step = 2;
-    this.title = 'بررسی درخواست'
+    this.title = 'بررسی درخواست';
   }
-  declinedReq(){
+  declinedReq() {
     this.step = 1;
-    this.title = 'لیست درخواست ها'
+    this.title = 'لیست درخواست ها';
   }
-  acceptReq(){
+  acceptReq() {
     this.step = 3;
-    this.title = 'بررسی صلاحیت'
+    this.title = 'بررسی صلاحیت';
   }
-  declinedQual(){
+  declinedQual() {
     this.step = 2;
-    this.title = 'بررسی درخواست'
+    this.title = 'بررسی درخواست';
   }
 }

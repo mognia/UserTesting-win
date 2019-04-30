@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ElectronService } from 'ngx-electron';
 import { RecorderModule } from '../../../../recorder.js';
 import { IpcService } from './../../services/ipc.service';
@@ -17,7 +17,6 @@ export class RecorderComponent implements OnInit {
 
 
   }
-  @Output() stopRecord = new EventEmitter<any>();
   isStepsOpen = false;
   ngOnInit() {
 

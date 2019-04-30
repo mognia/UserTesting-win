@@ -1,15 +1,15 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-2 recCtrl" (click)="Rec()">
+    <button type="button" class=" btn btn-outline-primary" (click)="Rec()">
         <i class="fas fa-video" ></i>
-    </div>
-    <div class="col-2 recCtrl" (click)="stopRec()">
-        <i class="far fa-stop-circle" ></i>
-    </div>
-    <div class="col-2 recCtrl" (click)="playRec()">
-        <i class="far fa-play-circle"  ></i>
-    </div>
-    <div class="col-5 float-right">
+    </button>
+    <button type="button" class=" btn btn-outline-primary" disabled (click)="stopRec()">
+        <i class="fas fa-stop-circle" ></i>
+    </button>
+    <button type="button" class=" btn btn-outline-primary"(click)="playRec()">
+        <i class="fas fa-play-circle"  ></i>
+    </button>
+    <div class=" float-right">
       <button mat-raised-button class="steps" (click)="openSteps()">
           <i *ngIf='!isStepsOpen' class="fas fa-angle-double-down"></i>
           <i *ngIf='isStepsOpen' class="fas fa-angle-double-up"></i>

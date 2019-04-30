@@ -10,6 +10,7 @@ let recording
 let includeMic = true;
 
 recorder.prototype.onAccessApproved = function onAccessApproved(id) {
+    cleanRecord()
     if (!id) {
         console.log('Access rejected.')
         return
@@ -18,7 +19,7 @@ recorder.prototype.onAccessApproved = function onAccessApproved(id) {
     navigator.webkitGetUserMedia({
         audio: {
             mandatory: {
-              chromeMediaSource: 'desktop'
+              chromeMediaSource: 'desktop', chromeMediaSourceId: id
             }
           },
         video: {
@@ -71,8 +72,6 @@ recorder.prototype.playRec = function playRec() {
     let video = document.querySelector('video')
     video.controls = true;
     video.muted = false
-    console.log(recordedChunks);
-    
     let blob = new Blob(recordedChunks, {type: 'video/webm'})
     video.src = URL.createObjectURL(blob)
 }

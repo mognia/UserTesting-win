@@ -23,3 +23,11 @@
 mat-raised-button{
     font-family: iranSansM;
 }
+.btn-outline-primary{
+    margin: 7px 19px;
+}
+.btn-outline-primary:hover {
+    color: #fff;
+    background-color: #6495ed;
+    border-color: #007bff;
+}

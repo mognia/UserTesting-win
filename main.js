@@ -36,8 +36,8 @@ function createRecorder () {
   // Create the browser window.
   Recorder = new BrowserWindow({
   
-    width: 314, 
-    height: 90,
+    width: 414, 
+    height: 250,
     // frame: false,
     backgroundColor: '#fff',
     icon: `file://${__dirname}/dist/assets/logo.png`
