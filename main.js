@@ -2,6 +2,7 @@ const { app, BrowserWindow, ipcMain ,ipcRenderer ,desktopCapturer } = require('e
 var events = require('events');
 var eventEmitter = new events.EventEmitter();
 let win;
+let Recorder;
 const remote = require('electron').remote;
 
 
@@ -10,6 +11,7 @@ function createWindow () {
   win = new BrowserWindow({
     width: 498, 
     height: 770,
+    parent:Recorder,
    backgroundColor: '#ffffff',
     icon: `file://${__dirname}/dist/assets/logo.png`
   })
@@ -21,7 +23,7 @@ function createWindow () {
 
   win.setResizable(false);
   //// uncomment below to open the DevTools.
-   win.webContents.openDevTools()
+  // win.webContents.openDevTools()
 
   // Event when the window is closed.
   win.on('closed', function () {
@@ -58,12 +60,12 @@ function createRecorder () {
   ipcMain.on('openSteps',()=>{
     Recorder.setResizable(true);
     Recorder.setSize(314,200);
-    Recorder.setResizable(false);
+  //  Recorder.setResizable(false);
   });
   ipcMain.on('closeSteps',()=>{
     Recorder.setResizable(true);
     Recorder.setSize(314,90);
-    Recorder.setResizable(false);
+  //  Recorder.setResizable(false);
   });
 }
 

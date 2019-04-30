@@ -3,11 +3,11 @@
     <div class="col-2 recCtrl" (click)="Rec()">
         <i class="fas fa-video" ></i>
     </div>
-    <div class="col-2 recCtrl">
-        <i class="far fa-stop-circle"></i>
+    <div class="col-2 recCtrl" (click)="stopRec()">
+        <i class="far fa-stop-circle" ></i>
     </div>
-    <div class="col-2 recCtrl">
-        <i class="far fa-play-circle"></i>
+    <div class="col-2 recCtrl" (click)="playRec()">
+        <i class="far fa-play-circle"  ></i>
     </div>
     <div class="col-5 float-right">
       <button mat-raised-button class="steps" (click)="openSteps()">
@@ -18,4 +18,8 @@
 
     </div>
   </div>
+  
+  <div class="row">
+    <video id="video" controls class="video-js" data-setup='{}'></video>
+</div>
 </div>

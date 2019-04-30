@@ -1,46 +1,95 @@
-const { app, BrowserWindow, ipcMain ,ipcRenderer ,desktopCapturer } = require('electron')
 var events = require('events');
 var eventEmitter = new events.EventEmitter();
+function recorder() { }
 
-app.on('ready',()=>{
-    console.log('ready');
-    
-})
-eventEmitter.on('testemit',()=>{
-    console.log('testemt');
-    
-})
+let localStream
+let microAudioStream
+let recordedChunks = []
+let numRecordedChunks = 0
+let recording
+let includeMic = true;
 
-ipcMain.on('startRecording', () => {
-    console.log('ssssssssss');
+recorder.prototype.onAccessApproved = function onAccessApproved(id) {
+    if (!id) {
+        console.log('Access rejected.')
+        return
+    }
+    console.log('Window ID: ', id)
+    navigator.webkitGetUserMedia({
+        audio: {
+            mandatory: {
+              chromeMediaSource: 'desktop'
+            }
+          },
+        video: {
+            mandatory: {
+                chromeMediaSource: 'desktop', chromeMediaSourceId: id,
+                maxWidth: window.screen.width, maxHeight: window.screen.height
+            }
+        }
+    }, getMediaStream, getUserMediaError)
+}
+const getUserMediaError = () => {
+    console.log('getUserMedia() failed.')
+  }
+const getMediaStream = (stream) => {
+    let video = document.querySelector('video')
+    video.src = URL.createObjectURL(stream)
+
+    localStream = stream
+    try {
+        console.log('Start recording the stream.')
+        recording = new MediaRecorder(stream)
+    } catch (e) {
+        console.log(false, 'Exception while creating MediaRecorder: ' + e)
+        return
+    }
+    recording.ondataavailable = (event) => {
+        console.log(event);
+        
+        if (event.data && event.data.size > 0) {
+          recordedChunks.push(event.data)
+          numRecordedChunks += event.data.byteLength
+        }
+      }
+    recording.onstop = () => { console.log('recorderOnStop fired') }
+    recording.start()
+    console.log('Recorder is started.')
+    console.log(`state: ${state}`);
+   // disableButtons()
+}
+
+recorder.prototype.stopRec = function stopRec() {
+    console.log(localStream.getVideoTracks());
+    recording.stop()
+    localStream.getVideoTracks()[0].stop()
+    console.log(localStream.getVideoTracks());
     
+    // recording.stop()
+}
+recorder.prototype.playRec = function playRec() {
+    let video = document.querySelector('video')
+    video.controls = true;
+    video.muted = false
+    console.log(recordedChunks);
     
-    // desktopCapturer.getSources({ types: ['screen'] }).then(async sources => {
-    //     console.log(sources);
-  
-    //     for (const source of sources) {
-    //       if (source.name === 'Electron') {
-    //         try {
-    //           const stream = await navigator.mediaDevices.getUserMedia({
-    //             audio: false,
-    //             video: {
-    //               mandatory: {
-    //                 chromeMediaSource: 'desktop',
-    //                 chromeMediaSourceId: source.id,
-    //                 minWidth: 1280,
-    //                 maxWidth: 1280,
-    //                 minHeight: 720,
-    //                 maxHeight: 720
-    //               }
-    //             }
-    //           })
-    //           handleStream(stream)
-    //         } catch (e) {
-    //           handleError(e)
-    //         }
-    //         return
-    //       }
-    //     }
-    // })
-  });
-  
+    let blob = new Blob(recordedChunks, {type: 'video/webm'})
+    video.src = URL.createObjectURL(blob)
+}
+const cleanRecord = () => {
+    let video = document.querySelector('video');
+    video.controls = false;
+    recordedChunks = []
+    numRecordedChunks = 0
+  }
+
+  const recorderOnDataAvailable = (event) => {
+    if (event.data && event.data.size > 0) {
+      recordedChunks.push(event.data)
+      numRecordedChunks += event.data.byteLength
+    }
+  }
+
+var RecorderModule = new recorder();
+
+export { RecorderModule };
