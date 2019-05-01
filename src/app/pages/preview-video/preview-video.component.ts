@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RecorderModule } from '../../../../recorder.js';
+import { ElectronService } from 'ngx-electron';
 
 @Component({
   selector: 'app-preview-video',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PreviewVideoComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _electronService: ElectronService,
+
+  ) { }
 
   ngOnInit() {
+   this._electronService.ipcRenderer.on('recived-chunks', (e , options)=>{
+    console.log("from previewwww  "+options);
+    
+   })
+   
   }
 
 }

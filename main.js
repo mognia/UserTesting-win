@@ -3,6 +3,7 @@ var events = require('events');
 var eventEmitter = new events.EventEmitter();
 let win;
 let Recorder;
+let preview;
 const remote = require('electron').remote;
 
 
@@ -67,6 +68,32 @@ function createRecorder () {
     Recorder.setSize(275,100);
   //  Recorder.setResizable(false);
   });
+
+
+    // Create the preview window.
+    preview = new BrowserWindow({
+      width: 550, 
+      height: 429,
+      parent:Recorder,
+      modal:true,
+      show:false,
+     backgroundColor: '#0004',
+      icon: `file://${__dirname}/dist/assets/logo.png`
+    })
+  
+  
+    preview.loadURL(`file://${__dirname}/dist/UserTesting-win/index.html#previewVideo`)
+  
+    preview.setMenu(null)
+  
+    preview.setResizable(false);
+    //// uncomment below to open the DevTools.
+    preview.webContents.openDevTools()
+  
+    // Event when the window is closed.
+    preview.on('closed', function () {
+      preview = null;
+    });
 }
 
 
@@ -113,31 +140,8 @@ ipcMain.on('openRecDialog', (event)=>{
   
 });
 
-ipcMain.on('openPreview',(event)=>{
-  // Create the preview window.
-  preview = new BrowserWindow({
-    width: 550, 
-    height: 429,
-    parent:Recorder,
-    modal:true,
-    show:false,
-   backgroundColor: '#0004',
-    icon: `file://${__dirname}/dist/assets/logo.png`
-  })
-
-
-  preview.loadURL(`file://${__dirname}/dist/UserTesting-win/index.html#previewVideo`)
-
-  preview.setMenu(null)
-
-  preview.setResizable(false);
-  //// uncomment below to open the DevTools.
-  // preview.webContents.openDevTools()
-
-  // Event when the window is closed.
-  preview.on('closed', function () {
-    preview = null;
-  });
+ipcMain.on('openPreview',(e ,options)=>{
+  preview.webContents.send('recived-chunks',options)
   preview.show();
   Recorder.hide();
 })

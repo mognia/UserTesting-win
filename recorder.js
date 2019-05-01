@@ -46,26 +46,29 @@ const getMediaStream = (stream) => {
         return
     }
     recording.ondataavailable = (event) => {
-        console.log(event);
+  
         
         if (event.data && event.data.size > 0) {
           recordedChunks.push(event.data)
           numRecordedChunks += event.data.byteLength
         }
       }
-    recording.onstop = () => { console.log('recorderOnStop fired') }
+    recording.onstop = () => { 
+
+     }
     recording.start()
-    console.log('Recorder is started.')
-    console.log(`state: ${state}`);
-   // disableButtons()
+
 }
 
 recorder.prototype.stopRec = function stopRec() {
- 
+    
     localStream.getVideoTracks()[0].stop()
     recording.stop()
     
     // recording.stop()
+}
+recorder.prototype.getChunk = function getChunk() {
+    return recordedChunks;
 }
 // recorder.prototype.playRec = function playRec() {
 //     let video = document.querySelector('video')

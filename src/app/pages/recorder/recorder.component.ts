@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ElectronService } from 'ngx-electron';
 import { RecorderModule } from '../../../../recorder.js';
 import { IpcService } from './../../services/ipc.service';
-
 @Component({
   selector: 'app-recorder',
   templateUrl: './recorder.component.html',
@@ -11,6 +10,9 @@ import { IpcService } from './../../services/ipc.service';
 
 export class RecorderComponent implements OnInit {
   recording = false;
+  chunks;
+
+
   constructor(private _ipc: IpcService,
     private _electronService: ElectronService,
   ) {
@@ -27,11 +29,9 @@ export class RecorderComponent implements OnInit {
     if (this.isStepsOpen === false) {
       this._ipc.send('openSteps');
       this.isStepsOpen = true;
-      console.log('open');
 
     } else {
       this._ipc.send('closeSteps');
-      console.log('close');
       this.isStepsOpen = false;
     }
   }
@@ -55,8 +55,9 @@ export class RecorderComponent implements OnInit {
 
   }
   stopRec() {
+    this.chunks = RecorderModule.getChunk();
     RecorderModule.stopRec();
-    this._ipc.send('openPreview');
+    this._ipc.send('openPreview' ,this.chunks);
     this.recording = false;
   }
   playRec() {
