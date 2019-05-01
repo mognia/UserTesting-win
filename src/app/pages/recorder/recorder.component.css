@@ -1,33 +1,50 @@
-.recCtrl{
-    border-right: 1px solid #4e4e4e63;
-    margin: 9px 3px;
-    border-left: 1px solid #4e4e4e63;
-    color: cornflowerblue;
-    padding: 4px 0 0 14px;
-    background: gainsboro;
-    font-size: 19px;
-    cursor: pointer;
+.recCtrl {
+  margin: 9px 3px;
+
+  color: cornflowerblue;
+
+  background: gainsboro;
+  font-size: 19px;
+  cursor: pointer;
 }
-.recCtrl:hover{
-    color: #fff;
+.recCtrl:hover {
+  color: #fff;
 }
-.steps{
-    display: inline-block;
-    margin: 7px 11px;
-    text-align: center;
-    background: cornflowerblue;
-    color: #fff;
-    font-family: iranSansM;
-    padding: 0 22px;
+.steps {
+  display: inline-block;
+  margin: 7px 11px;
+  text-align: center;
+  background: cornflowerblue;
+  color: #fff;
+  font-family: iranSansM;
+  padding: 0 22px;
 }
-mat-raised-button{
-    font-family: iranSansM;
+mat-raised-button {
+  font-family: iranSansM;
 }
-.btn-outline-primary{
-    margin: 7px 19px;
+.btn-outline-primary {
+  margin: 7px 19px;
 }
 .btn-outline-primary:hover {
-    color: #fff;
-    background-color: #6495ed;
-    border-color: #007bff;
+  color: #fff;
+  background-color: #6495ed;
+  border-color: #007bff;
+}
+
+::ng-deep .mat-tooltip {
+    top: -15px !important;
+    font-family: iranSansM;
+ }
+::ng-deep .mat-tooltip-panel {
+    top: -15px !important;
+    left: 63px!important;
+    font-family: iranSansM;
+
+
+}
+.controls {
+border-bottom: 1px solid #0004;
+}
+.stopBtn{
+    color: red;
 }

@@ -10,7 +10,7 @@ let recording
 let includeMic = true;
 
 recorder.prototype.onAccessApproved = function onAccessApproved(id) {
-    cleanRecord()
+   // cleanRecord()
     if (!id) {
         console.log('Access rejected.')
         return
@@ -34,8 +34,8 @@ const getUserMediaError = () => {
     console.log('getUserMedia() failed.')
   }
 const getMediaStream = (stream) => {
-    let video = document.querySelector('video')
-    video.src = URL.createObjectURL(stream)
+    // let video = document.querySelector('video')
+    // video.src = URL.createObjectURL(stream)
 
     localStream = stream
     try {
@@ -61,20 +61,19 @@ const getMediaStream = (stream) => {
 }
 
 recorder.prototype.stopRec = function stopRec() {
-    console.log(localStream.getVideoTracks());
-    recording.stop()
+ 
     localStream.getVideoTracks()[0].stop()
-    console.log(localStream.getVideoTracks());
+    recording.stop()
     
     // recording.stop()
 }
-recorder.prototype.playRec = function playRec() {
-    let video = document.querySelector('video')
-    video.controls = true;
-    video.muted = false
-    let blob = new Blob(recordedChunks, {type: 'video/webm'})
-    video.src = URL.createObjectURL(blob)
-}
+// recorder.prototype.playRec = function playRec() {
+//     let video = document.querySelector('video')
+//     video.controls = true;
+//     video.muted = false
+//     let blob = new Blob(recordedChunks, {type: 'video/webm'})
+//     video.src = URL.createObjectURL(blob)
+// }
 const cleanRecord = () => {
     let video = document.querySelector('video');
     video.controls = false;
@@ -88,7 +87,10 @@ const cleanRecord = () => {
       numRecordedChunks += event.data.byteLength
     }
   }
-
+eventEmitter.on('startRec',()=>{
+    console.log('startRec');
+    
+})
 var RecorderModule = new recorder();
 
 export { RecorderModule };

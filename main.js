@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain ,ipcRenderer ,desktopCapturer } = require('electron')
+const { app, BrowserWindow, ipcMain ,ipcRenderer ,dialog } = require('electron')
 var events = require('events');
 var eventEmitter = new events.EventEmitter();
 let win;
@@ -36,8 +36,8 @@ function createRecorder () {
   // Create the browser window.
   Recorder = new BrowserWindow({
   
-    width: 414, 
-    height: 250,
+    width: 275, 
+    height: 100,
     // frame: false,
     backgroundColor: '#fff',
     icon: `file://${__dirname}/dist/assets/logo.png`
@@ -59,15 +59,18 @@ function createRecorder () {
 
   ipcMain.on('openSteps',()=>{
     Recorder.setResizable(true);
-    Recorder.setSize(314,200);
+    Recorder.setSize(275,192);
   //  Recorder.setResizable(false);
   });
   ipcMain.on('closeSteps',()=>{
     Recorder.setResizable(true);
-    Recorder.setSize(314,90);
+    Recorder.setSize(275,100);
   //  Recorder.setResizable(false);
   });
 }
+
+
+
 
 
 // Create window on electron intialization
@@ -93,3 +96,48 @@ ipcMain.on('OpenRec', (event) => {
   createRecorder();
   win.hide();
 });
+
+ipcMain.on('openRecDialog', (event)=>{
+  const options  = {
+    type: 'question',
+    buttons: ["Yes","No"],
+    message: "آیا از شروع ضبط اطمینان دارید؟"
+   }
+
+   let response = dialog.showMessageBox(options)
+   console.log(response)
+   if (response === 0) {
+    event.sender.send('startRec');
+
+   }
+  
+});
+
+ipcMain.on('openPreview',(event)=>{
+  // Create the preview window.
+  preview = new BrowserWindow({
+    width: 550, 
+    height: 429,
+    parent:Recorder,
+    modal:true,
+    show:false,
+   backgroundColor: '#0004',
+    icon: `file://${__dirname}/dist/assets/logo.png`
+  })
+
+
+  preview.loadURL(`file://${__dirname}/dist/UserTesting-win/index.html#previewVideo`)
+
+  preview.setMenu(null)
+
+  preview.setResizable(false);
+  //// uncomment below to open the DevTools.
+  // preview.webContents.openDevTools()
+
+  // Event when the window is closed.
+  preview.on('closed', function () {
+    preview = null;
+  });
+  preview.show();
+  Recorder.hide();
+})
