@@ -37,7 +37,7 @@ function createRecorder () {
   // Create the browser window.
   Recorder = new BrowserWindow({
   
-    width: 275, 
+    width: 295, 
     height: 100,
     // frame: false,
     backgroundColor: '#fff',
@@ -68,32 +68,6 @@ function createRecorder () {
     Recorder.setSize(275,100);
   //  Recorder.setResizable(false);
   });
-
-
-    // Create the preview window.
-    preview = new BrowserWindow({
-      width: 550, 
-      height: 429,
-      parent:Recorder,
-      modal:true,
-      show:false,
-     backgroundColor: '#0004',
-      icon: `file://${__dirname}/dist/assets/logo.png`
-    })
-  
-  
-    preview.loadURL(`file://${__dirname}/dist/UserTesting-win/index.html#previewVideo`)
-  
-    preview.setMenu(null)
-  
-    preview.setResizable(false);
-    //// uncomment below to open the DevTools.
-    preview.webContents.openDevTools()
-  
-    // Event when the window is closed.
-    preview.on('closed', function () {
-      preview = null;
-    });
 }
 
 
@@ -132,7 +106,7 @@ ipcMain.on('openRecDialog', (event)=>{
    }
 
    let response = dialog.showMessageBox(options)
-   console.log(response)
+   
    if (response === 0) {
     event.sender.send('startRec');
 
@@ -141,7 +115,7 @@ ipcMain.on('openRecDialog', (event)=>{
 });
 
 ipcMain.on('openPreview',(e ,options)=>{
-  preview.webContents.send('recived-chunks',options)
-  preview.show();
-  Recorder.hide();
+  Recorder.setResizable(true);
+  Recorder.setSize(400,300);
+  Recorder.setResizable(false);
 })

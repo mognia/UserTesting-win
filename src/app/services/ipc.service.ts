@@ -31,5 +31,6 @@ export class IpcService {
     }
     this._ipc.send(channel, ...args);
   }
+  
 
 }

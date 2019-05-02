@@ -40,7 +40,8 @@ const getMediaStream = (stream) => {
     localStream = stream
     try {
         console.log('Start recording the stream.')
-        recording = new MediaRecorder(stream)
+        recording = new MediaRecorder(stream);
+      
     } catch (e) {
         console.log(false, 'Exception while creating MediaRecorder: ' + e)
         return
@@ -49,6 +50,7 @@ const getMediaStream = (stream) => {
   
         
         if (event.data && event.data.size > 0) {
+            
           recordedChunks.push(event.data)
           numRecordedChunks += event.data.byteLength
         }
@@ -62,21 +64,41 @@ const getMediaStream = (stream) => {
 
 recorder.prototype.stopRec = function stopRec() {
     
-    localStream.getVideoTracks()[0].stop()
     recording.stop()
-    
+    localStream.getVideoTracks()[0].stop();
+    setTimeout(function () {
+        playRec1()
+      }, 10)
     // recording.stop()
 }
 recorder.prototype.getChunk = function getChunk() {
     return recordedChunks;
 }
-// recorder.prototype.playRec = function playRec() {
-//     let video = document.querySelector('video')
-//     video.controls = true;
-//     video.muted = false
-//     let blob = new Blob(recordedChunks, {type: 'video/webm'})
-//     video.src = URL.createObjectURL(blob)
-// }
+function playRec1(chunks) {
+    // console.log(typeof chunks);
+    
+    // console.log(chunks);
+    
+    let video = document.querySelector('video')
+  
+    let blob = new Blob(recordedChunks, {type: 'video/webm'})
+     
+    video.src = window.URL.createObjectURL(blob)
+
+}
+recorder.prototype.playRec = function playRec(chunks) {
+    // console.log(typeof chunks);
+    
+    // console.log(chunks);
+    
+    let video = document.querySelector('video')
+    video.controls = true;
+    video.muted = false
+    let blob = new Blob(recordedChunks, {type: 'video/webm'})
+     
+    video.src = window.URL.createObjectURL(blob)
+
+}
 const cleanRecord = () => {
     let video = document.querySelector('video');
     video.controls = false;
@@ -84,16 +106,7 @@ const cleanRecord = () => {
     numRecordedChunks = 0
   }
 
-  const recorderOnDataAvailable = (event) => {
-    if (event.data && event.data.size > 0) {
-      recordedChunks.push(event.data)
-      numRecordedChunks += event.data.byteLength
-    }
-  }
-eventEmitter.on('startRec',()=>{
-    console.log('startRec');
-    
-})
+
 var RecorderModule = new recorder();
 
 export { RecorderModule };

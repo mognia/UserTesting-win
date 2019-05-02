@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ElectronService } from 'ngx-electron';
 import { RecorderModule } from '../../../../recorder.js';
 import { IpcService } from './../../services/ipc.service';
+
 @Component({
   selector: 'app-recorder',
   templateUrl: './recorder.component.html',
@@ -10,11 +11,12 @@ import { IpcService } from './../../services/ipc.service';
 
 export class RecorderComponent implements OnInit {
   recording = false;
-  chunks;
-
+  recorded = false;
+  showVideo = false;
 
   constructor(private _ipc: IpcService,
     private _electronService: ElectronService,
+
   ) {
 
 
@@ -55,12 +57,16 @@ export class RecorderComponent implements OnInit {
 
   }
   stopRec() {
-    this.chunks = RecorderModule.getChunk();
+    this.showVideo = true;
+    this.recorded = true;
     RecorderModule.stopRec();
-    this._ipc.send('openPreview' ,this.chunks);
-    this.recording = false;
+    
+    this._ipc.send('openPreview');
   }
   playRec() {
-    RecorderModule.playRec();
+    let chunks = RecorderModule.getChunk();
+    let video = document.querySelector('video')
+    let blob = new Blob(chunks, {type: 'video/webm'})
+    video.src = window.URL.createObjectURL(blob);
   }
 }
