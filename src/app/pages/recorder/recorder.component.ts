@@ -59,14 +59,19 @@ export class RecorderComponent implements OnInit {
   stopRec() {
     this.showVideo = true;
     this.recorded = true;
+    this.recording =false;
     RecorderModule.stopRec();
     
     this._ipc.send('openPreview');
   }
-  playRec() {
-    let chunks = RecorderModule.getChunk();
-    let video = document.querySelector('video')
-    let blob = new Blob(chunks, {type: 'video/webm'})
-    video.src = window.URL.createObjectURL(blob);
+  refresh() {
+   RecorderModule.refresh();
+   this._ipc.send('refreshPreview');
+   this.showVideo = false;
+   this.recorded = false;
+   this.recording = false;
+  }
+  saveFile(){
+    RecorderModule.saveFile();
   }
 }

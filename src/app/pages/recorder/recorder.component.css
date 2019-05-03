@@ -19,6 +19,15 @@
   font-family: iranSansM;
   padding: 0 22px;
 }
+.uploadBtn{
+  display: inline-block;
+  margin: 7px 11px;
+  text-align: center;
+  background:greenyellow;
+  color: #fff;
+  font-family: iranSansM;
+  padding: 0 22px;
+}
 mat-raised-button {
   font-family: iranSansM;
 }

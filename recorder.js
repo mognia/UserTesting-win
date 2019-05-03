@@ -34,9 +34,7 @@ const getUserMediaError = () => {
     console.log('getUserMedia() failed.')
   }
 const getMediaStream = (stream) => {
-    // let video = document.querySelector('video')
-    // video.src = URL.createObjectURL(stream)
-
+    
     localStream = stream
     try {
         console.log('Start recording the stream.')
@@ -67,17 +65,11 @@ recorder.prototype.stopRec = function stopRec() {
     recording.stop()
     localStream.getVideoTracks()[0].stop();
     setTimeout(function () {
-        playRec1()
+        playRec()
       }, 10)
-    // recording.stop()
 }
-recorder.prototype.getChunk = function getChunk() {
-    return recordedChunks;
-}
-function playRec1(chunks) {
-    // console.log(typeof chunks);
-    
-    // console.log(chunks);
+
+function playRec(chunks) {
     
     let video = document.querySelector('video')
   
@@ -86,19 +78,26 @@ function playRec1(chunks) {
     video.src = window.URL.createObjectURL(blob)
 
 }
-recorder.prototype.playRec = function playRec(chunks) {
-    // console.log(typeof chunks);
-    
-    // console.log(chunks);
-    
-    let video = document.querySelector('video')
-    video.controls = true;
-    video.muted = false
-    let blob = new Blob(recordedChunks, {type: 'video/webm'})
-     
-    video.src = window.URL.createObjectURL(blob)
 
+recorder.prototype.refresh = function refresh() {
+cleanRecord();
 }
+
+recorder.prototype.saveFile = function saveFile() {
+    let blob = new Blob(recordedChunks, {type: 'video/webm'})
+    let url = URL.createObjectURL(blob)
+    let a = document.createElement('a')
+    document.body.appendChild(a)
+    a.style = 'display: none'
+    a.href = url
+    a.download = 'testHub-recorded.webm'
+    a.click()
+    setTimeout(function () {
+      document.body.removeChild(a)
+      window.URL.revokeObjectURL(url)
+    }, 100)
+
+    }
 const cleanRecord = () => {
     let video = document.querySelector('video');
     video.controls = false;

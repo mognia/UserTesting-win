@@ -37,7 +37,7 @@ function createRecorder () {
   // Create the browser window.
   Recorder = new BrowserWindow({
   
-    width: 295, 
+    width: 300, 
     height: 100,
     // frame: false,
     backgroundColor: '#fff',
@@ -60,12 +60,12 @@ function createRecorder () {
 
   ipcMain.on('openSteps',()=>{
     Recorder.setResizable(true);
-    Recorder.setSize(275,192);
+    Recorder.setSize(300,192);
   //  Recorder.setResizable(false);
   });
   ipcMain.on('closeSteps',()=>{
     Recorder.setResizable(true);
-    Recorder.setSize(275,100);
+    Recorder.setSize(300,100);
   //  Recorder.setResizable(false);
   });
 }
@@ -116,6 +116,11 @@ ipcMain.on('openRecDialog', (event)=>{
 
 ipcMain.on('openPreview',(e ,options)=>{
   Recorder.setResizable(true);
-  Recorder.setSize(400,300);
+  Recorder.setSize(429,356);
+  Recorder.setResizable(false);
+})
+ipcMain.on('refreshPreview',(e ,options)=>{
+  Recorder.setResizable(true);
+  Recorder.setSize(362,100);
   Recorder.setResizable(false);
 })
