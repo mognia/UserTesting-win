@@ -124,3 +124,19 @@ ipcMain.on('refreshPreview',(e ,options)=>{
   Recorder.setSize(362,100);
   Recorder.setResizable(false);
 })
+
+ipcMain.on('openRefreshDialog', (event)=>{
+  const options  = {
+    type: 'warning',
+    buttons: ["Yes","No"],
+    message: "آیا مطمئن هستید مراحل ضبط از اول انجام شود؟"
+   }
+
+   let response = dialog.showMessageBox(options)
+   
+   if (response === 0) {
+    event.sender.send('refreshRec');
+
+   }
+  
+});

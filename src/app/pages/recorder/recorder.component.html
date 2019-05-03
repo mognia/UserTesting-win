@@ -17,9 +17,7 @@
         class="recCtrl " (click)='refresh()'  *ngIf='recorded'>
         <i class="fas fa-sync"></i>
       </button>
-      <button mat-raised-button matTooltip="ذخیره" matTooltipClass="rec-tooltip"
-        aria-label="Button that shows a red tooltip" matTooltipHideDelay='1000' matTooltipPosition='right'
-        class="recCtrl " (click)="saveFile()" *ngIf='recorded' id="pre">
+      <button mat-raised-button class="recCtrl " (click)="saveFile()" *ngIf='recorded' id="pre">
         <i class="far fa-save"></i>
       </button>
     </div>

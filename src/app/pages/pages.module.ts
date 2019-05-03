@@ -6,15 +6,14 @@ import { ComponentsModule } from './../components/components.module';
 import { RecorderComponent } from './recorder/recorder.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import { PreviewVideoComponent } from './preview-video/preview-video.component';
-const homeComponent =[
+
+const homeComponent = [
   HomePageComponent
-]
+];
 @NgModule({
   declarations: [
     ...homeComponent,
     RecorderComponent,
-    PreviewVideoComponent
   ],
   imports: [
     BrowserModule,

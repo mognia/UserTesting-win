@@ -61,15 +61,18 @@ export class RecorderComponent implements OnInit {
     this.recorded = true;
     this.recording =false;
     RecorderModule.stopRec();
-    
     this._ipc.send('openPreview');
   }
   refresh() {
-   RecorderModule.refresh();
-   this._ipc.send('refreshPreview');
-   this.showVideo = false;
-   this.recorded = false;
-   this.recording = false;
+    this._ipc.send('openRefreshDialog');
+    this._ipc.on('refreshRec', (event, result) => {
+
+      RecorderModule.refresh();
+      this._ipc.send('refreshPreview');
+      this.showVideo = false;
+      this.recorded = false;
+      this.recording = false;
+    });
   }
   saveFile(){
     RecorderModule.saveFile();
