@@ -8,6 +8,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import { ReqListComponent } from './req-list/req-list.component';
 import { ReqReviewComponent } from './req-review/req-review.component';
 import { ReqQualificationComponent } from './req-qualification/req-qualification.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 const materialModules = [
   MatButtonModule,
@@ -20,13 +21,15 @@ const materialModules = [
         NavbarComponent,
         ReqListComponent,
         ReqReviewComponent,
-        ReqQualificationComponent
+        ReqQualificationComponent,
+        SidenavComponent
     ],
     declarations: [
         NavbarComponent,
         ReqListComponent,
         ReqReviewComponent,
-        ReqQualificationComponent
+        ReqQualificationComponent,
+        SidenavComponent
     ],
     imports: [
         BrowserModule,
