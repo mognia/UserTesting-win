@@ -1,7 +1,11 @@
 <app-navbar></app-navbar>
 <mat-drawer-container class="example-container" dir="rtl">
     <mat-drawer mode="side" opened>
-      <app-sidenav></app-sidenav>
+      <app-sidenav (selectedItem)='pageHandeler($event)'></app-sidenav>
     </mat-drawer>
-    <mat-drawer-content>Main content</mat-drawer-content>
+    <mat-drawer-content>
+      <app-user-info *ngIf='selectedComponent == "userInfo"'></app-user-info>
+      <app-tests-status *ngIf='selectedComponent == "testsStatus"'></app-tests-status>
+      <app-user-turnover *ngIf='selectedComponent == "userTurnover"'></app-user-turnover>
+    </mat-drawer-content>
   </mat-drawer-container>

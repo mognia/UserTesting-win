@@ -11,6 +11,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import { TestsStatusComponent } from './tests-status/tests-status.component';
 import { UserTurnoverComponent } from './user-turnover/user-turnover.component';
+import { UserInfoComponent } from './user-info/user-info.component';
 
 const homeComponent = [
   HomePageComponent
@@ -22,6 +23,7 @@ const homeComponent = [
     UserPanelComponent,
     TestsStatusComponent,
     UserTurnoverComponent,
+    UserInfoComponent,
   ],
   imports: [
     BrowserModule,

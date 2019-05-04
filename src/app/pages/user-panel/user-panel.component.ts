@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-panel.component.css']
 })
 export class UserPanelComponent implements OnInit {
-
+  selectedComponent = 'userInfo';
   constructor() { }
 
   ngOnInit() {
+    console.log(this.selectedComponent);
+    
   }
-
+  pageHandeler(e) {
+  this.selectedComponent = e;
+  console.log(this.selectedComponent);
+  }
 }
