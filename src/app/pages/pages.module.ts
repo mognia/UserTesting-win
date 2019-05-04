@@ -6,6 +6,7 @@ import { ComponentsModule } from './../components/components.module';
 import { RecorderComponent } from './recorder/recorder.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { UserPanelComponent } from './user-panel/user-panel.component';
 
 const homeComponent = [
   HomePageComponent
@@ -14,6 +15,7 @@ const homeComponent = [
   declarations: [
     ...homeComponent,
     RecorderComponent,
+    UserPanelComponent,
   ],
   imports: [
     BrowserModule,

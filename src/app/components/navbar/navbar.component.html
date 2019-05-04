@@ -20,16 +20,10 @@
         </div>
       </div>
       <div class="col-2 ">
-          <button mat-button [matMenuTriggerFor]="menu" class="settingBtn">
+          <button mat-button (click)='gotoPanel()' class="settingBtn">
               <i class="fas fa-users-cog"></i>
           </button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item>
-              خروج
-                <i class="fas fa-sign-out-alt"></i>
-            </button>
-            <button mat-menu-item>Item 2</button>
-          </mat-menu>
+
       </div>
     </div>
   </nav>
