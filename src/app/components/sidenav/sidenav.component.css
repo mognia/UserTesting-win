@@ -7,6 +7,9 @@
     border-bottom: 2px solid #6d6d6d;
     cursor: pointer;
 }
+.active{
+    background: #6d6d6d
+}
 .menuItem p{
     margin: 0;
     padding: 9px 14px;

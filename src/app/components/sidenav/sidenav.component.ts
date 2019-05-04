@@ -7,13 +7,16 @@ import MenuItem from './menu'
 })
 export class SidenavComponent implements OnInit {
   items: MenuItem []= [
-    {id: '0', name: 'اطلاعات کاربری'},
-    {id: '2', name: 'وضعیت تست ها'},
-    {id: '3', name: 'گردش مالی'}
+    {id: 'navItem', name: 'اطلاعات کاربری'},
+    {id: 'navItem', name: 'وضعیت تست ها'},
+    {id: 'navItem', name: 'گردش مالی'}
 ];
+selected;
   constructor() { }
 
   ngOnInit() {
   }
-
+  activateClass(item){
+   this.selected =item;
+  }
 }

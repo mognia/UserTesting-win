@@ -9,6 +9,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSidenavModule} from '@angular/material/sidenav';
 
 import { UserPanelComponent } from './user-panel/user-panel.component';
+import { TestsStatusComponent } from './tests-status/tests-status.component';
+import { UserTurnoverComponent } from './user-turnover/user-turnover.component';
 
 const homeComponent = [
   HomePageComponent
@@ -18,6 +20,8 @@ const homeComponent = [
     ...homeComponent,
     RecorderComponent,
     UserPanelComponent,
+    TestsStatusComponent,
+    UserTurnoverComponent,
   ],
   imports: [
     BrowserModule,
