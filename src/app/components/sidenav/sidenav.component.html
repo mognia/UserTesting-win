@@ -1,4 +1,4 @@
 
-<div class="menuItem" *ngFor='let item of items'  (click)="activateClass(item)" [ngClass]="{'active': selected == item}" id="{{item.id}}">
+<div class="menuItem" *ngFor='let item of items' (click)="activateClass(item)" [ngClass]="{'active': selected == item }" id="{{item.id}}">
   <p>{{item.name}}</p>
 </div>

@@ -1,3 +1,7 @@
 .example-container {
   height: 90%;
   }
+  .mat-drawer.mat-drawer-side {
+    z-index: 2;
+    background: #00000017;
+}
