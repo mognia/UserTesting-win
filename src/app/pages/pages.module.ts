@@ -6,6 +6,8 @@ import { ComponentsModule } from './../components/components.module';
 import { RecorderComponent } from './recorder/recorder.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSidenavModule} from '@angular/material/sidenav';
+
 import { UserPanelComponent } from './user-panel/user-panel.component';
 
 const homeComponent = [
@@ -22,7 +24,8 @@ const homeComponent = [
     PagesRoutingModule,
     ComponentsModule,
     MatButtonModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [],
