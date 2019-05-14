@@ -21,7 +21,7 @@ export class HomePageComponent implements OnInit {
     this.step = 1;
     this.title = 'لیست درخواست ها';
   }
-  acceptReq() {
+  openQualification() {
     this.step = 3;
     this.title = 'بررسی صلاحیت';
   }
