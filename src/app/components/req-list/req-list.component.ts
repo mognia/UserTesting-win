@@ -18,8 +18,10 @@ export class ReqListComponent implements OnInit {
     });
   }
   choseReq(reqID){
-    this.reqService.showDetails(reqID).subscribe(res => {
-    })
+    this.reqService.showDetails({reqID: reqID}).subscribe(res =>{
+
+     this.reqService.selectedDetail.emit(res);
+    });
   }
 
 

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 
@@ -6,7 +6,7 @@ import { HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class RequestService {
-
+  selectedDetail = new EventEmitter<any>();
   constructor(
     private http: HttpClient,
     ) { }
@@ -16,9 +16,9 @@ export class RequestService {
       headers.append('Content-Type', 'application/json');
       return this.http.post('http://localhost:3000/getTestRequests', { headers: headers });
     }
-    showDetails(recID) {
+    showDetails(reqID) {
       const headers = new HttpHeaders();
       headers.append('Content-Type', 'application/json');
-      return this.http.post('http://localhost:3000/showDetails', recID, { headers: headers });
+      return this.http.post('http://localhost:3000/showDetails', reqID, { headers: headers });
     }
 }
