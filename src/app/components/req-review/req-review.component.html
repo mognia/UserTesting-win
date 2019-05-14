@@ -1,15 +1,15 @@
 <div class="review">
   <mat-card>
     <div class="cardTitle">
-      <p class="title">{{requestDetail.employer}}</p>
-      <p class="discribe">{{requestDetail.reqType}}</p>
+      <p class="title">{{requestDetail?.employer}}</p>
+      <p class="discribe">{{requestDetail?.reqType}}</p>
     </div>
     <div class="cardBody">
       <p class="title">
-        جزئیات درخواست {{requestDetail.reqType}} {{requestDetail.employer}}
+        جزئیات درخواست {{requestDetail?.reqType}} {{requestDetail?.employer}}
       </p>
       <p class="discribe">
-        {{requestDetail.detailText}}
+        {{requestDetail?.detailText}}
        </p>
     </div>
     <div class="cardFooter">

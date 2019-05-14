@@ -1,27 +1,23 @@
 <div class="review">
   <mat-card>
     <div class="cardTitle">
-      <p class="title">{{requestDetail.employer}}</p>
-      <p class="discribe">{{requestDetail.reqType}}</p>
+      <p class="title">{{requestDetail?.employer}}</p>
+      <p class="discribe">{{requestDetail?.reqType}}</p>
     </div>
     <div class="cardBody">
       <p class="title">
         تایید صلاحیت برای شروع تست
       </p>
       <p class="discribe">
-        میانگین چند ساعت در روز آنلاین هستید؟
+      {{questionData?.text}}
       </p>
         <div class="options">
-
-          <mat-radio-group aria-label="Select an option" dir="rtl">
-            <mat-radio-button value="1">کمتر از 1 ساعت</mat-radio-button>
-            <mat-radio-button value="2"> 1 تا 2 ساعت </mat-radio-button>
-            <mat-radio-button value="3"> 2 تا 3 ساعت </mat-radio-button>
-            <mat-radio-button value="4"> 3 تا 4 ساعت </mat-radio-button>
-            <mat-radio-button value="5"> بیش از 4 ساعت </mat-radio-button>
+          <!-- <form [formGroup]='qualificationForm'>
+          <mat-radio-group formControlName='options' aria-label="Select an option" dir="rtl"  [(ngModel)]="selectedQuestion">
+            <mat-radio-button *ngFor='let option of questionOptions | keyvalue' value="{{option.key}}">{{option.value}}</mat-radio-button>
           </mat-radio-group>
+        </form> -->
         </div>
-
     </div>
     <div class="cardFooter">
       <button type="button" class="btn btn-primary" id="acceptQual" (click)='openRecorder()'>قبول</button>
