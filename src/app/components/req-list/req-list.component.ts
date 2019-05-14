@@ -1,16 +1,26 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-
+import { RequestService } from '../../services/request-service.service';
 @Component({
   selector: 'app-req-list',
   templateUrl: './req-list.component.html',
   styleUrls: ['./req-list.component.css']
 })
 export class ReqListComponent implements OnInit {
-
-  constructor() { }
+  reqList;
+  constructor(
+    private reqService: RequestService
+  ) { }
+  @Output() reqSelected = new EventEmitter<any>();
 
   ngOnInit() {
+    this.reqService.getRequests().subscribe(res =>{
+    this.reqList = res;  
+    });
   }
-  @Output() reqSelected = new EventEmitter<any>();
+  choseReq(reqID){
+    this.reqService.showDetails(reqID).subscribe(res => {
+    })
+  }
+
 
 }

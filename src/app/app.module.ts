@@ -8,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import { NgxElectronModule } from 'ngx-electron';
+import { RequestService } from './services/request-service.service';
+import { HttpClientModule } from '@angular/common/http'; 
 const materialModules = [
   MatButtonModule,
   MatMenuModule
@@ -17,6 +19,7 @@ const materialModules = [
     AppComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     PagesModule,
@@ -25,7 +28,9 @@ const materialModules = [
     NgxElectronModule,
     ...materialModules
   ],
-  providers: [],
+  providers: [
+    RequestService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

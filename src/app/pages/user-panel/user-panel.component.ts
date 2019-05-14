@@ -15,6 +15,5 @@ export class UserPanelComponent implements OnInit {
   }
   pageHandeler(e) {
   this.selectedComponent = e;
-  console.log(this.selectedComponent);
   }
 }
