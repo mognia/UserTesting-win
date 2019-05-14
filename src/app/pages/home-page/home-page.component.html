@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
 <p class="bodyTitle">{{title}}</p>
 <app-req-list *ngIf="step == 1" (reqSelected)='reqSelected()'></app-req-list>
-<app-req-review *ngIf="step == 2" (declinedReq)='declinedReq()' (openQualification)='openQualification()'></app-req-review>
-<app-req-qualification *ngIf='step == 3' (declinedQual)='declinedQual()'></app-req-qualification>
+<app-req-review *ngIf="step == 2" (declinedReq)='declinedReq()' (openQualification)='openQualification($event)'></app-req-review>
+<app-req-qualification *ngIf='step == 3' (declinedQual)='declinedQual()' [requestDetail]="requestDetail"></app-req-qualification>

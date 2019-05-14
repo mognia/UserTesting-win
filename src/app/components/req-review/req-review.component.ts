@@ -21,10 +21,8 @@ export class ReqReviewComponent implements OnInit {
     });
   }
   accept() {
-    console.log(this.requestDetail.qualification);
-    
     if (this.requestDetail.qualification) {
-      this.openQualification.emit('openQualification');
+      this.openQualification.emit(this.requestDetail);
     } else {
       this._ipc.send('OpenRec');
     }
