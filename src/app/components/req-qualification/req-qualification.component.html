@@ -1,5 +1,5 @@
 <div class="review">
-  <mat-card>
+  <mat-card *ngIf='!notQuali'>
     <div class="cardTitle">
       <p class="title">{{requestDetail?.employer}}</p>
       <p class="discribe">{{requestDetail?.reqType}}</p>
@@ -9,20 +9,31 @@
         تایید صلاحیت برای شروع تست
       </p>
       <p class="discribe">
-      {{questionData?.text}}
+        {{questionData?.text}}
       </p>
-        <div class="options">
-          <!-- <form [formGroup]='qualificationForm'>
-          <mat-radio-group formControlName='options' aria-label="Select an option" dir="rtl"  [(ngModel)]="selectedQuestion">
-            <mat-radio-button *ngFor='let option of questionOptions | keyvalue' value="{{option.key}}">{{option.value}}</mat-radio-button>
+      <div class="options">
+        <form [formGroup]='qualificationForm'>
+          <mat-radio-group formControlName='options' aria-label="Select an option" dir="rtl"
+            [(ngModel)]="selectedQuestion">
+            <mat-radio-button *ngFor='let option of questionOptions | keyvalue' value="{{option.key}}">{{option.value}}
+            </mat-radio-button>
           </mat-radio-group>
-        </form> -->
-        </div>
+        </form>
+      </div>
     </div>
     <div class="cardFooter">
       <button type="button" class="btn btn-primary" id="acceptQual" (click)='openRecorder()'>قبول</button>
       <button type="button" class="btn btn-secondary" (click)='declinedQual.emit("declinedReq")'>بازگشت</button>
     </div>
   </mat-card>
-
+  <mat-card *ngIf='notQuali'>
+    <div class="cardTitle">
+      <p class="title">{{requestDetail?.employer}}</p>
+      <p class="discribe">{{requestDetail?.reqType}}</p>
+    </div>
+    <div class="cardBody">
+      <p class="failTitle">متاسفانه شما صلاحیت انجام این تست را ندارید</p>
+      <p class="failText">اما جای نگرانی نیست هنوز چندین کارفرما در انتظار نظرات شما هستند</p>
+    </div>
+  </mat-card>
 </div>

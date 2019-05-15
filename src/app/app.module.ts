@@ -10,6 +10,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { NgxElectronModule } from 'ngx-electron';
 import { RequestService } from './services/request-service.service';
 import { HttpClientModule } from '@angular/common/http'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 const materialModules = [
   MatButtonModule,
   MatMenuModule
@@ -19,6 +20,8 @@ const materialModules = [
     AppComponent
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,

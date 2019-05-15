@@ -39,7 +39,17 @@
 mat-radio-button{
     display: block
 }
-
+.failTitle{
+    text-align: center;
+    color: red;
+    padding: 12px 0;
+    font-size: 17px;
+}
+.failText{
+    text-align: center;
+    font-size: 18px;
+    font-weight: 100;
+}
   ::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
     opacity: 0 !important;     /*click effect color change*/
     background-color: #6495ed !important;

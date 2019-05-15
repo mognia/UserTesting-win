@@ -9,12 +9,13 @@ import { ReqListComponent } from './req-list/req-list.component';
 import { ReqReviewComponent } from './req-review/req-review.component';
 import { ReqQualificationComponent } from './req-qualification/req-qualification.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const materialModules = [
   MatButtonModule,
   MatMenuModule,
   MatCardModule,
-  MatRadioModule
+  MatRadioModule,
 ]
 @NgModule({
     exports: [
@@ -32,6 +33,8 @@ const materialModules = [
         SidenavComponent
     ],
     imports: [
+        FormsModule,
+        ReactiveFormsModule,
         BrowserModule,
         ...materialModules
     ],

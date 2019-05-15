@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { IpcService } from './../../services/ipc.service';
 import { RequestService } from '../../services/request-service.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-req-qualification',
   templateUrl: './req-qualification.component.html',
@@ -16,12 +17,13 @@ export class ReqQualificationComponent implements OnInit {
   questionText;
   questionOptions;
   selectedQuestion;
-
+  notQuali = false;
   qualificationForm: FormGroup;
   constructor(
     private  _ipc: IpcService,
     private reqService: RequestService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
     ) { }
 
   ngOnInit() {
@@ -34,8 +36,18 @@ export class ReqQualificationComponent implements OnInit {
     });
   }
   openRecorder() {
-    console.log(this.qualificationForm.get('options').value);
-    this._ipc.send('OpenRec');
+   // console.log(this.qualificationForm.get('options').value);
+    this.selectedQuestion = this.qualificationForm.get('options').value;
+    if (this.selectedQuestion != this.questionData.rightAnswer) {
+      this.reqService.removeThisTest({reqID : this.requestDetail.reqID}).subscribe(res =>{
+      });
+      this.notQuali = true;
+      setInterval(function() {
+        window.location.reload();
+      }, 4000);
+    } else {
+      this._ipc.send('OpenRec');
+    }
   }
 
 }
