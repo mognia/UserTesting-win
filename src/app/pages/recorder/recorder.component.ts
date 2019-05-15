@@ -29,31 +29,21 @@ export class RecorderComponent implements OnInit {
   }
   isStepsOpen = false;
   ngOnInit() {
-  
-  
+
+
    this.getHints();
 
   }
-  // getReqData() {
-  //   return new Promise(resolve => {
-  //     this.reqService.selectedDetail.subscribe(data => {
-  //      // console.log(data);
-        
-  //       this.requestDetail = data.requestDetail;
 
-  //       resolve('done');
-  //     });
-  //   });
-  // }
   async getHints() {
     this.selectedReqID = await this.reqService.getReqDetail();
 
-    
-     this.reqService.getHints({ reqID:this.selectedReqID }).subscribe(res => {
-       
+
+     this.reqService.getHints({ reqID: this.selectedReqID }).subscribe(res => {
+
        this.hints = res;
        console.log(this.hints);
-       
+
     });
   }
   openSteps() {

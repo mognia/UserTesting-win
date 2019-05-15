@@ -37,10 +37,11 @@
         </button>
     </div>
   </div>
-  <div class="row" *ngIf='isStepsOpen'>
-    <div *ngFor="let item of hints | keyvalue">{{item.value}}</div>
+  <div class=" hintContainer" *ngIf='isStepsOpen'>
+    <p class="hintText" *ngFor="let item of hints | paginate: { itemsPerPage: 1, currentPage: p }">{{item}}</p>
     <div class="pagination"> 
-      
+        <pagination-controls (pageChange)="p = $event" maxSize="0"  previousLabel="قبلی"  nextLabel="بعدی" ></pagination-controls>
+
     </div>
   </div>
   <div *ngIf='showVideo' class="row">
