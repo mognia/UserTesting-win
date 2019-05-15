@@ -2,7 +2,9 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ElectronService } from 'ngx-electron';
 import { RecorderModule } from '../../../../recorder.js';
 import { IpcService } from './../../services/ipc.service';
-
+import { RequestService } from '../../services/request-service.service';
+import { promise } from 'protractor';
+import { resolve } from 'path';
 @Component({
   selector: 'app-recorder',
   templateUrl: './recorder.component.html',
@@ -13,8 +15,12 @@ export class RecorderComponent implements OnInit {
   recording = false;
   recorded = false;
   showVideo = false;
-
-  constructor(private _ipc: IpcService,
+  selectedReqID;
+  hints;
+  p = 1;
+  constructor(
+    private reqService: RequestService,
+    private _ipc: IpcService,
     private _electronService: ElectronService,
 
   ) {
@@ -23,10 +29,33 @@ export class RecorderComponent implements OnInit {
   }
   isStepsOpen = false;
   ngOnInit() {
-
+  
+  
+   this.getHints();
 
   }
+  // getReqData() {
+  //   return new Promise(resolve => {
+  //     this.reqService.selectedDetail.subscribe(data => {
+  //      // console.log(data);
+        
+  //       this.requestDetail = data.requestDetail;
 
+  //       resolve('done');
+  //     });
+  //   });
+  // }
+  async getHints() {
+    this.selectedReqID = await this.reqService.getReqDetail();
+
+    
+     this.reqService.getHints({ reqID:this.selectedReqID }).subscribe(res => {
+       
+       this.hints = res;
+       console.log(this.hints);
+       
+    });
+  }
   openSteps() {
     if (this.isStepsOpen === false) {
       this._ipc.send('openSteps');
@@ -39,7 +68,7 @@ export class RecorderComponent implements OnInit {
   }
   Rec() {
     this._ipc.send('openRecDialog');
-    this._ipc.on('startRec', (event, result) => {
+    this._ipc.on('startRec', (_event, _result) => {
       this.recording = true;
       this._electronService.desktopCapturer.getSources({ types: ['screen'] }, (error, sources) => {
         if (error) {
@@ -59,13 +88,13 @@ export class RecorderComponent implements OnInit {
   stopRec() {
     this.showVideo = true;
     this.recorded = true;
-    this.recording =false;
+    this.recording = false;
     RecorderModule.stopRec();
     this._ipc.send('openPreview');
   }
   refresh() {
     this._ipc.send('openRefreshDialog');
-    this._ipc.on('refreshRec', (event, result) => {
+    this._ipc.on('refreshRec', (_event, _result) => {
 
       RecorderModule.refresh();
       this._ipc.send('refreshPreview');
@@ -74,7 +103,7 @@ export class RecorderComponent implements OnInit {
       this.recording = false;
     });
   }
-  saveFile(){
+  saveFile() {
     RecorderModule.saveFile();
   }
 }

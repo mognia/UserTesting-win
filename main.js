@@ -61,12 +61,12 @@ function createRecorder () {
   ipcMain.on('openSteps',()=>{
     Recorder.setResizable(true);
     Recorder.setSize(300,192);
-  //  Recorder.setResizable(false);
+    Recorder.setResizable(false);
   });
   ipcMain.on('closeSteps',()=>{
     Recorder.setResizable(true);
     Recorder.setSize(300,100);
-  //  Recorder.setResizable(false);
+    Recorder.setResizable(false);
   });
 }
 

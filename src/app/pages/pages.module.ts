@@ -12,7 +12,7 @@ import { UserPanelComponent } from './user-panel/user-panel.component';
 import { TestsStatusComponent } from './tests-status/tests-status.component';
 import { UserTurnoverComponent } from './user-turnover/user-turnover.component';
 import { UserInfoComponent } from './user-info/user-info.component';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 const homeComponent = [
   HomePageComponent
 ];
@@ -26,6 +26,7 @@ const homeComponent = [
     UserInfoComponent,
   ],
   imports: [
+    NgxPaginationModule,
     BrowserModule,
     PagesRoutingModule,
     ComponentsModule,

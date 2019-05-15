@@ -27,7 +27,7 @@ export class ReqQualificationComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.reqService.getQualification({recID : this.requestDetail.reqID}).subscribe(res => {
+    this.reqService.getQualification({reqID : this.requestDetail.reqID}).subscribe(res => {
       this.questionData = res;
       this.questionOptions = this.questionData.options;
     });
@@ -46,6 +46,8 @@ export class ReqQualificationComponent implements OnInit {
         window.location.reload();
       }, 4000);
     } else {
+      this.reqService.setReqDetail(this.requestDetail);
+      this.router.navigate(['/rec'])
       this._ipc.send('OpenRec');
     }
   }

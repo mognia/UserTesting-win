@@ -7,6 +7,7 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class RequestService {
   selectedDetail = new EventEmitter<any>();
+  selectedReqID;
   constructor(
     private http: HttpClient,
     ) { }
@@ -30,5 +31,16 @@ export class RequestService {
       const headers = new HttpHeaders();
       headers.append('Content-Type', 'application/json');
       return this.http.post('http://localhost:3000/removeThisTest', reqID, { headers: headers });
+    }
+    getHints(reqID) {
+      const headers = new HttpHeaders();
+      headers.append('Content-Type', 'application/json');
+      return this.http.post('http://localhost:3000/getHints', reqID, { headers: headers });
+    }
+    setReqDetail(data){
+      this.selectedReqID = data.reqID;
+    }
+    getReqDetail(){
+      return this.selectedReqID;
     }
 }
